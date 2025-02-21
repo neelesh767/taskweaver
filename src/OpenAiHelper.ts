@@ -87,7 +87,7 @@ Your response **must** strictly follow this structured JSON format:
 Ensure the response is in structured JSON format, and **do not add any extra explanations.**`;
 
     const response = await this._openai?.chat.completions.create({
-      model: "gpt-4o",
+      model: "gpt-4o-mini",
       messages: [{ role: "system", content: prompt }],
       response_format: { type: "json_object" },
     });
@@ -202,7 +202,7 @@ Ensure the response is in structured JSON format, and **do not add any extra exp
     `;
 
     const response = await this._openai?.chat.completions.create({
-      model: "gpt-4o",
+      model: "gpt-4o-mini",
       messages: [{ role: "system", content: prompt }],
       response_format: { type: "json_object" },
     });
