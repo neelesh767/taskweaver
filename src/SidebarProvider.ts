@@ -49,8 +49,8 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
               type: "resetTask",
             });
           }
-
           break;
+
         case "requestFiles":
           const files = await this.getWorkspaceFiles();
           webviewView.webview.postMessage({ type: "fileList", files });
@@ -59,6 +59,10 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     });
   }
 
+  /**
+   * Retrieves a list of files in the workspace with specific extensions, excluding node_modules.
+   * @returns A promise that resolves to an array of objects, each containing the relative and absolute paths of the files.
+   */
   private async getWorkspaceFiles(): Promise<
     { relativePath: string; absolutePath: string }[]
   > {

@@ -10,6 +10,12 @@ export class FileHelper {
     this._projectRootPath = this.getProjectRootPath();
   }
 
+  /**
+   * Gets the root path of the current project.
+   * If no workspace is open, will return the directory of the file that is currently open in the editor.
+   * If no file is open and no workspace is open, will return undefined.
+   * @return The root path of the project, or undefined.
+   */
   public getProjectRootPath() {
     const workspaceFolders = vscode.workspace.workspaceFolders;
     if (workspaceFolders && workspaceFolders.length > 0) {
@@ -25,6 +31,12 @@ export class FileHelper {
     return undefined; // No workspace or file open
   }
 
+  /**
+   * Gets a list of all files in the project, ignoring node_modules and .git directories.
+   * @param dir The directory to start searching from. Defaults to the project root path.
+   * @param fileList The list of files to add to. Defaults to an empty array.
+   * @returns A promise that resolves to a list of all files in the project, with the base path removed.
+   */
   public async getAllFilesInProject(
     dir: string = this._projectRootPath || "",
     fileList: string[] = []
@@ -51,6 +63,11 @@ export class FileHelper {
     return fileList;
   }
 
+  /**
+   * Reads the content of a file given its path.
+   * @param filePath The path to the file whose content is to be read.
+   * @returns The content of the file as a string.
+   */
   public async getFileContent(filePath: string) {
     return fs.readFileSync(filePath, "utf-8");
   }

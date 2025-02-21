@@ -10,6 +10,17 @@ export class TaskGenerator {
 
   constructor() {}
 
+  /**
+   * Given a task, a list of selected files, and the list of all files in the project,
+   * this function generates a detailed step-by-step implementation plan for the task.
+   * The plan includes code snippets, descriptions, and any dependencies required.
+   * The function also returns a list of suggested files to look at that are not in the
+   * selected files list.
+   * @param task The task to generate a plan for.
+   * @param selectedFileNames The list of files the user has selected.
+   * @param allFiles The list of all files in the project.
+   * @returns A JSON object containing the plan.
+   */
   async generatePlanForTask(
     task: string,
     selectedFileNames: string[],

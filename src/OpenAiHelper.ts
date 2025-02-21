@@ -99,6 +99,18 @@ Ensure the response is in structured JSON format, and **do not add any extra exp
     return responseObj;
   }
 
+  /**
+   * Given a task, all selected files, and the list of all files in the project,
+   * this function generates a detailed step-by-step implementation plan for the task.
+   * The plan includes code snippets, descriptions, and any dependencies required.
+   * The function also returns a list of suggested files to look at that are not in the
+   * selected files list.
+   *
+   * @param task The task to generate a plan for.
+   * @param allSelectedFiles The object containing the selected files with their content.
+   * @param allFiles The list of all files in the project.
+   * @returns A JSON object containing the plan.
+   */
   public async generatePlanForTask(
     task: string,
     allSelectedFiles: { [key: string]: string },
